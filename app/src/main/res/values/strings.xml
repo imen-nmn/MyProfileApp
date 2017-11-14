@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">MyProfileApp</string>
+    <string name="profile_add_my_phone">"اضف هاتفي الخلوي"</string>
+    <string name="profile_invite_my_friend">"ادعو صديق و اربح 20 د.ك"</string>
+    <string name="profile_friends">"اصديقائي ملبين الدعوة"</string>
+    <string name="profile_credits">"رصيدي"</string>
+    <string name="profile_help">"مساعدة"</string>
+
+</resources>
