@@ -19,16 +19,16 @@ class ContentRecyclerViewAdapter(private val mValues: List<DummyItem>, private v
 
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent?.getContext())
+        val view = LayoutInflater.from(parent?.context)
                 .inflate(R.layout.fragment_profile, parent, false)
         return ViewHolder(view)
     }
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.mItem = mValues.get(position)
-        holder.mIdView.setText(mValues.get(position).id)
-        holder.mContentView.setText(mValues.get(position).content)
+        holder.mItem = mValues[position]
+        holder.mIdView.text = mValues[position].id
+        holder.mContentView.text = mValues[position].content
 
         holder.mView.setOnClickListener(object : View.OnClickListener {
             public override fun onClick(v: View) {
@@ -56,7 +56,7 @@ class ContentRecyclerViewAdapter(private val mValues: List<DummyItem>, private v
         }
 
         override fun toString(): String {
-            return super.toString() + " '" + mContentView.getText() + "'"
+            return """${super.toString()} '${mContentView.text}'"""
         }
     }
 }

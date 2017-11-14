@@ -26,10 +26,10 @@ class MainActivity : AppCompatActivity(), ProfileFragment.OnListFragmentInteract
      * @param withBackStack
      */
     open fun replaceFragment(fragment: Fragment, containerId: Int, withBackStack: Boolean) {
-        fragment.setEnterTransition(Fade(Fade.IN));
-        fragment.setExitTransition(Fade(Fade.OUT));
+        fragment.enterTransition = Fade(Fade.IN)
+        fragment.exitTransition = Fade(Fade.OUT)
         var backStateName: String? = fragment::class.simpleName
-        var fragmentPopped = getSupportFragmentManager().popBackStackImmediate(backStateName, 0)
+        var fragmentPopped = supportFragmentManager.popBackStackImmediate(backStateName, 0)
         if (!fragmentPopped) {
             var fragmentTransaction = getSupportFragmentManager().beginTransaction()
             fragmentTransaction.replace(containerId, fragment, backStateName)
