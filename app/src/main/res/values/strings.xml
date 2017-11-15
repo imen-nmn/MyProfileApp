@@ -33,5 +33,8 @@
     </string-array>
 
     <string name="request_permission">This application needs camera permission.</string>
+    <string name="add_phone_hint">"رقم الهاتف : (رقم الهاتف)(رمز الدولة)+"</string>
+    <string name="add_phone_send_code">"ارسل الكود"</string>
+    <string name="add_phone_exit">"خروج"</string>
 
 </resources>

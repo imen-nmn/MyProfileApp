@@ -1,10 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorAccent"
     tools:context="com.imennmn.myprofileapp.ui.AddPhoneNumberActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/toolbar_background"
+        app:layout_collapseMode="pin"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:subtitle=""
+        app:title=""/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/background"/>
+
+    <EditText
+        android:id="@+id/phone_edt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minEms="10"
+        android:hint="@string/add_phone_hint"
+        android:inputType="number"
+        android:focusable="true"
+        android:gravity="center"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/hint_color"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/white_radius_background"
+        android:layout_below="@+id/toolbar"
+        android:text=""/>
+
+    <Button
+        android:id="@+id/send_code_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@+id/phone_edt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:gravity="center"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:background="@drawable/white_radius_background"
+        android:text="@string/add_phone_send_code"/>
+
+    <TextView
+        android:id="@+id/exit_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="35dp"
+        android:text="@string/add_phone_exit"/>
+</RelativeLayout>

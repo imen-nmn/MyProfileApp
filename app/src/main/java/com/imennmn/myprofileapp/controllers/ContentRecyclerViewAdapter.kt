@@ -12,6 +12,7 @@ import com.imennmn.myprofileapp.ui.ProfileFragment.OnListFragmentInteractionList
 
 class ContentRecyclerViewAdapter(private val mValues: List<String>, private val mListener: OnListFragmentInteractionListener?) : RecyclerView.Adapter<ContentRecyclerViewAdapter.ViewHolder>() {
 
+    private val addPhoneNumberIndex = 0
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent?.context)
                 .inflate(R.layout.item_profile, parent, false)
@@ -21,15 +22,11 @@ class ContentRecyclerViewAdapter(private val mValues: List<String>, private val 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.mItem = mValues[position]
-//        holder.mIdView.text = mValues[position]
         holder.mContentView.text = mValues[position]
-
         holder.mView.setOnClickListener {
-            if (null != mListener) {
-                // Notify the active callbacks interface (the activity, if the
-                // fragment is attached to one) that an item has been selected.
-//                    mListener!!.onListFragmentInteraction(holder.mItem)
-            }
+           if(position == addPhoneNumberIndex){
+               mListener!!.openAddPhoneNumberView()
+           }
         }
     }
 

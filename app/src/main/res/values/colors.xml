@@ -3,6 +3,7 @@
     <color name="colorPrimary">#5581e3</color>
     <color name="colorPrimaryDark">#4374e0</color>
     <color name="colorAccent">#3c68c9</color>
-    <color name="profile_toolbar_background">#eeeeee</color>
+    <color name="toolbar_background">#eeeeee</color>
+    <color name="hint_color">#80eeeeee</color>
 
 </resources>

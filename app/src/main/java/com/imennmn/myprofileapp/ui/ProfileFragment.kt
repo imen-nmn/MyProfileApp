@@ -168,7 +168,7 @@ class ProfileFragment : Fragment(), OnFailureListener,
      * See the Android Training lesson [Communicating with Other Fragments](http://developer.android.com/training/basics/fragments/communicating.html) for more information.
      */
     interface OnListFragmentInteractionListener {
-        fun onListFragmentInteraction(item: String)
+        fun openAddPhoneNumberView()
         fun setSupportActionBar(toolbar: Toolbar?)
         fun showMessage(messageToShow: String)
         fun showAlertDialogWithDecision(messageToShow: String,

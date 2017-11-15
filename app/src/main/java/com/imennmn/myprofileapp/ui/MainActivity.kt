@@ -16,8 +16,10 @@ class MainActivity : BaseActivity(), ProfileFragment.OnListFragmentInteractionLi
 //        firebaseManager.validatePhoneNumber("+21695600411")
     }
 
-    override fun onListFragmentInteraction(item: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
+
+    override fun openAddPhoneNumberView(){
+        AddPhoneNumberActivity.openNewActivity(this)
     }
 
 
