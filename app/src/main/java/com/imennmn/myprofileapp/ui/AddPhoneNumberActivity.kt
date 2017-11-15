@@ -1,7 +1,8 @@
-package com.imennmn.myprofileapp
+package com.imennmn.myprofileapp.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.imennmn.myprofileapp.R
 
 class AddPhoneNumberActivity : AppCompatActivity() {
 

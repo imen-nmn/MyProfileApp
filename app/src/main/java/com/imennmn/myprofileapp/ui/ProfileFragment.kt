@@ -1,15 +1,16 @@
-package com.imennmn.myprofileapp
+package com.imennmn.myprofileapp.ui
 
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.imennmn.myprofileapp.dummy.DummyContent
-import com.imennmn.myprofileapp.dummy.DummyContent.DummyItem
+import com.imennmn.myprofileapp.R
+import com.imennmn.myprofileapp.controllers.ContentRecyclerViewAdapter
 
 /**
  * A fragment representing a list of Items.
@@ -37,15 +38,21 @@ class ProfileFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.fragment_content_list, container, false)
+        val view = inflater!!.inflate(R.layout.profile, container, false)
 
-        // Set the adapter
-        if (view is RecyclerView) {
-            val context = view.getContext()
-            val recyclerView = view as RecyclerView
-            recyclerView.setLayoutManager(LinearLayoutManager(context))
-            recyclerView.setAdapter(ContentRecyclerViewAdapter(DummyContent.ITEMS, mListener))
-        }
+        val toolbar = view.findViewById<View>(R.id.toolbar) as Toolbar
+        val recyclerView : RecyclerView = view.findViewById<View>(R.id.list) as RecyclerView
+
+        toolbar.title = ""
+        toolbar.subtitle = ""
+        mListener!!.setSupportActionBar(toolbar)
+        //toolbar.setNavigationIcon(R.drawable.ic_toolbar);
+
+        val context = view.context
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        val items = resources.getStringArray(R.array.profile_menu)
+        recyclerView.adapter = ContentRecyclerViewAdapter(items.asList(), mListener)
+
         return view
     }
 
@@ -75,7 +82,8 @@ class ProfileFragment : Fragment() {
      */
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        fun onListFragmentInteraction(item: DummyItem)
+        fun onListFragmentInteraction(item: String)
+        fun setSupportActionBar(toolbar: Toolbar?)
     }
 
     companion object {

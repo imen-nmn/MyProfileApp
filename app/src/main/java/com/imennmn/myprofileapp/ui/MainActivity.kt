@@ -1,21 +1,25 @@
-package com.imennmn.myprofileapp
+package com.imennmn.myprofileapp.ui
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.transition.Fade
-import com.imennmn.myprofileapp.dummy.DummyContent
+import com.imennmn.myprofileapp.R
+import com.imennmn.myprofileapp.controllers.FirebaseRequestManager
 
 class MainActivity : AppCompatActivity(), ProfileFragment.OnListFragmentInteractionListener {
+
+    val firebaseManager   = FirebaseRequestManager()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         replaceFragment(ProfileFragment.newInstance(10), R.id.frame, false)
-
+//        firebaseManager.initFirebase(this)
+//        firebaseManager.validatePhoneNumber("+21695600411")
     }
 
-    override fun onListFragmentInteraction(item: DummyContent.DummyItem) {
+    override fun onListFragmentInteraction(item: String) {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
@@ -25,7 +29,7 @@ class MainActivity : AppCompatActivity(), ProfileFragment.OnListFragmentInteract
      * @param fragment
      * @param withBackStack
      */
-    open fun replaceFragment(fragment: Fragment, containerId: Int, withBackStack: Boolean) {
+    private fun replaceFragment(fragment: Fragment, containerId: Int, withBackStack: Boolean) {
         fragment.enterTransition = Fade(Fade.IN)
         fragment.exitTransition = Fade(Fade.OUT)
         var backStateName: String? = fragment::class.simpleName

@@ -1,9 +1,34 @@
 <resources>
     <string name="app_name">MyProfileApp</string>
-    <string name="profile_add_my_phone">"اضف هاتفي الخلوي"</string>
-    <string name="profile_invite_my_friend">"ادعو صديق و اربح 20 د.ك"</string>
-    <string name="profile_friends">"اصديقائي ملبين الدعوة"</string>
-    <string name="profile_credits">"رصيدي"</string>
-    <string name="profile_help">"مساعدة"</string>
 
+    <string-array name="profile_menu">
+        <item>"اضف هاتفي الخلوي"</item>
+        <item>"ادعو صديق و اربح 20 د.ك"</item>
+        <item>"اصديقائي ملبين الدعوة"</item>
+        <item>"رصيدي"</item>
+        <item>"حجوزاتي"</item>
+        <item>"مستنداتي"</item>
+        <item>"مساعدة"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+        <item>"محتوى اخر"</item>
+
+    </string-array>
 </resources>
