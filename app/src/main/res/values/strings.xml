@@ -31,4 +31,7 @@
         <item>"محتوى اخر"</item>
 
     </string-array>
+
+    <string name="request_permission">This application needs camera permission.</string>
+
 </resources>

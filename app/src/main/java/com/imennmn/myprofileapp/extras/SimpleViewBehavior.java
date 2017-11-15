@@ -14,9 +14,12 @@ import android.view.animation.Transformation;
 
 import com.imennmn.myprofileapp.R;
 
+
 /**
  * Created by zoonooz on 12/30/15 AD.
  * Easy CoordinatorLayout Behavior
+ * Modified by imen_nmn on 15/11/17
+ * origin library : https://github.com/zoonooz/simple-view-behavior
  */
 public class SimpleViewBehavior extends CoordinatorLayout.Behavior<View> {
 

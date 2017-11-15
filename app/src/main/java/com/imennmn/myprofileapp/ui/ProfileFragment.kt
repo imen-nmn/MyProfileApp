@@ -1,61 +1,106 @@
 package com.imennmn.myprofileapp.ui
 
+import android.Manifest
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat.checkSelfPermission
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.Toolbar
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import com.imennmn.myprofileapp.R
 import com.imennmn.myprofileapp.controllers.ContentRecyclerViewAdapter
+import com.imennmn.myprofileapp.controllers.TakePhotoController
+import com.imennmn.myprofileapp.extras.AlertDialogClickListener
 
-/**
- * A fragment representing a list of Items.
- *
- *
- * Activities containing this fragment MUST implement the [OnListFragmentInteractionListener]
- * interface.
- */
-/**
- * Mandatory empty constructor for the fragment manager to instantiate the
- * fragment (e.g. upon screen orientation changes).
- */
 class ProfileFragment : Fragment() {
-    // TODO: Customize parameters
-    private var mColumnCount = 4
+    private val cameraPermissions = arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
     private var mListener: OnListFragmentInteractionListener? = null
+    private var profileImg: ImageView? = null
+    private val requestCameraPermission = 1
+    private val requestTakePhoto = 0x38
+    private val takePhotoController = TakePhotoController()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+//    private val cameraPermissionListener :
 
-        if (arguments != null) {
-            mColumnCount = arguments.getInt(ARG_COLUMN_COUNT)
-        }
-    }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.profile, container, false)
-
+        val view = inflater!!.inflate(R.layout.profile_fragment, container, false)
         val toolbar = view.findViewById<View>(R.id.toolbar) as Toolbar
-        val recyclerView : RecyclerView = view.findViewById<View>(R.id.list) as RecyclerView
-
+        val recyclerView: RecyclerView = view.findViewById<View>(R.id.list) as RecyclerView
+        profileImg = view.findViewById(R.id.profile_img)
+        profileImg!!.setOnClickListener { openCamera() }
         toolbar.title = ""
         toolbar.subtitle = ""
         mListener!!.setSupportActionBar(toolbar)
-        //toolbar.setNavigationIcon(R.drawable.ic_toolbar);
-
-        val context = view.context
-        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager = LinearLayoutManager(view.context)
         val items = resources.getStringArray(R.array.profile_menu)
         recyclerView.adapter = ContentRecyclerViewAdapter(items.asList(), mListener)
 
         return view
     }
 
+    private fun openCamera() {
+        if (checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                || checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestCameraPermission()
+            return
+        }
+        takePhotoController.takePicture(this, requestTakePhoto)
+    }
+
+    private fun requestCameraPermission() {
+        if (shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)
+                && shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+            val cameraPermissionListener = object : AlertDialogClickListener {
+                override fun positiveButtonClicked() {
+                    requestPermissions(cameraPermissions,
+                            requestCameraPermission)
+                }
+
+                override fun negativeButtonClicked() {
+
+                }
+            }
+            mListener!!.showAlertDialogWithDecision(getString(R.string.request_permission),
+                    getString(android.R.string.ok),
+                    getString(android.R.string.cancel), cameraPermissionListener)
+        } else {
+            requestPermissions(cameraPermissions, requestCameraPermission)
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
+                                            grantResults: IntArray) {
+        if (requestCode == requestCameraPermission) {
+            if (checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                    || checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                mListener!!.showMessage(getString(R.string.request_permission))
+            } else {
+                openCamera()
+            }
+        } else {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == requestTakePhoto) {
+                val photoBitmap = takePhotoController.generatePhoto()
+                profileImg!!.setImageBitmap(photoBitmap)
+            }
+        }
+    }
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
@@ -83,21 +128,13 @@ class ProfileFragment : Fragment() {
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
         fun onListFragmentInteraction(item: String)
+
         fun setSupportActionBar(toolbar: Toolbar?)
+        fun showMessage(messageToShow: String)
+        fun showAlertDialogWithDecision(messageToShow: String,
+                                        positiveMsg: String,
+                                        negativeMsg: String,
+                                        callBack: AlertDialogClickListener?)
     }
 
-    companion object {
-
-        // TODO: Customize parameter argument names
-        private val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        fun newInstance(columnCount: Int): ProfileFragment {
-            val fragment = ProfileFragment()
-            val args = Bundle()
-            args.putInt(ARG_COLUMN_COUNT, columnCount)
-            fragment.arguments = args
-            return fragment
-        }
-    }
 }
