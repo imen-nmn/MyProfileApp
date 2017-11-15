@@ -22,7 +22,7 @@
         android:layout_margin="@dimen/item_profile_margin"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/ic_launcher_background"/>
+        android:src="@drawable/ic_chevron_left_black_24dp"/>
     <View
         android:layout_width="wrap_content"
         android:layout_height="1dp"

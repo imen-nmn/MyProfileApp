@@ -24,15 +24,13 @@ class ContentRecyclerViewAdapter(private val mValues: List<String>, private val 
 //        holder.mIdView.text = mValues[position]
         holder.mContentView.text = mValues[position]
 
-        holder.mView.setOnClickListener(object : View.OnClickListener {
-            public override fun onClick(v: View) {
-                if (null != mListener) {
-                    // Notify the active callbacks interface (the activity, if the
-                    // fragment is attached to one) that an item has been selected.
+        holder.mView.setOnClickListener {
+            if (null != mListener) {
+                // Notify the active callbacks interface (the activity, if the
+                // fragment is attached to one) that an item has been selected.
 //                    mListener!!.onListFragmentInteraction(holder.mItem)
-                }
             }
-        })
+        }
     }
 
     override fun getItemCount(): Int {

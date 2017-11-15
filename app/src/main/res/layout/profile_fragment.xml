@@ -47,15 +47,12 @@
 
     <include layout="@layout/list_content"/>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/profile_img"
+    <RelativeLayout
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:layout_gravity="center|top"
         android:layout_marginTop="50dp"
         android:elevation="10dp"
-        android:scaleType="centerCrop"
-        android:src="@mipmap/avatar"
+        android:layout_gravity="top|center"
         app:dependTargetY="-176dp"
         app:dependType="y"
         app:dependsOn="@+id/app_bar"
@@ -63,7 +60,25 @@
         app:targetHeight="40dp"
         app:targetWidth="40dp"
         app:targetX="16dp"
-        app:targetY="10dp"/>
+        app:targetY="10dp">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@mipmap/avatar"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateTint="@color/profile_toolbar_background"
+            android:indeterminateTintMode="src_atop"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/user_name"
