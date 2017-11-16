@@ -1,16 +1,18 @@
 package com.imennmn.myprofileapp.ui
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.telephony.TelephonyManager
 import android.view.View
 import com.imennmn.myprofileapp.R
+import io.michaelrocks.libphonenumber.android.NumberParseException
+import io.michaelrocks.libphonenumber.android.PhoneNumberUtil
 
 
-
-class AddPhoneNumberActivity : AppCompatActivity() {
+class AddPhoneNumberActivity : BaseActivity() {
 
     companion object {
         fun openNewActivity(fromActivity: Activity) {
@@ -27,6 +29,20 @@ class AddPhoneNumberActivity : AppCompatActivity() {
         val toolbar = findViewById<View>(R.id.toolbar) as Toolbar?
         toolbar!!.title=""
         toolbar!!.subtitle=""
+        showMessage(getCountryCode())
         setSupportActionBar(toolbar)
+    }
+
+    fun getCountryCode() : String {
+        val tm = getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
+        var prefixCode: String = tm.networkCountryIso.toUpperCase()
+        val  phoneUtil= PhoneNumberUtil.createInstance(this)
+        try {
+            var countryCode = phoneUtil.getCountryCodeForRegion(prefixCode)
+            return "+"+countryCode
+        } catch (e: NumberParseException) {
+            System.err.println("NumberParseException was thrown: " + e.toString())
+        }
+        return ""
     }
 }

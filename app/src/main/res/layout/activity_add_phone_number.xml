@@ -31,7 +31,7 @@
         android:layout_height="wrap_content"
         android:minEms="10"
         android:hint="@string/add_phone_hint"
-        android:inputType="number"
+        android:inputType="phone"
         android:focusable="true"
         android:gravity="center"
         android:paddingStart="10dp"
@@ -46,6 +46,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/white_radius_background"
         android:layout_below="@+id/toolbar"
+        android:textCursorDrawable="@null"
         android:text=""/>
 
     <Button
@@ -59,9 +60,10 @@
         android:textAllCaps="false"
         android:textColor="@android:color/white"
         android:background="@drawable/white_radius_background"
-        android:text="@string/add_phone_send_code"/>
+        android:text="@string/add_phone_send_code"
+        android:foreground="?android:attr/selectableItemBackground"/>
 
-    <TextView
+    <Button
         android:id="@+id/exit_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -69,5 +71,7 @@
         android:layout_centerHorizontal="true"
         android:textColor="@android:color/white"
         android:layout_marginBottom="35dp"
-        android:text="@string/add_phone_exit"/>
+        android:text="@string/add_phone_exit"
+        android:background="@android:color/transparent"
+        android:foreground="?android:attr/selectableItemBackground"/>
 </RelativeLayout>
