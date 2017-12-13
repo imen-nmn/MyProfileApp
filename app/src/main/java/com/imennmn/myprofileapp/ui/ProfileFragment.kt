@@ -54,7 +54,7 @@ class ProfileFragment : Fragment(), OnFailureListener,
         profileImg!!.setOnClickListener { openCamera() }
         toolbar.title = ""
         toolbar.subtitle = ""
-        profileImg!!.setImageResource(R.drawable.ic_menu_share)
+//        profileImg!!.setImageResource(R.drawable.ic_menu_share)
         mListener!!.setSupportActionBar(toolbar)
         recyclerView.layoutManager = LinearLayoutManager(view.context)
         val items = resources.getStringArray(R.array.profile_menu)

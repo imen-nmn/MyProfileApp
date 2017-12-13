@@ -2,39 +2,38 @@
     <string name="app_name">MyProfileApp</string>
 
     <string-array name="profile_menu">
-        <item>"اضف هاتفي الخلوي"</item>
-        <item>"ادعو صديق و اربح 20 د.ك"</item>
-        <item>"اصديقائي ملبين الدعوة"</item>
-        <item>"رصيدي"</item>
-        <item>"حجوزاتي"</item>
-        <item>"مستنداتي"</item>
-        <item>"مساعدة"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
-        <item>"محتوى اخر"</item>
+        <item>"Add phone number"</item>
+        <item>"Invite a friend"</item>
+        <item>"Friends"</item>
+        <item>"Credits"</item>
+        <item>"Favorites"</item>
+        <item>"Help"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+        <item>"Another item"</item>
+
 
     </string-array>
 
     <string name="request_permission">This application needs camera permission.</string>
-    <string name="add_phone_hint">"رقم الهاتف : (رقم الهاتف)(رمز الدولة)+"</string>
-    <string name="add_phone_send_code">"ارسل الكود"</string>
-    <string name="add_phone_exit">"خروج"</string>
+    <string name="add_phone_hint">"Phone number : "</string>
+    <string name="add_phone_send_code">"Send code"</string>
+    <string name="add_phone_exit">"Exit"</string>
 
 </resources>
