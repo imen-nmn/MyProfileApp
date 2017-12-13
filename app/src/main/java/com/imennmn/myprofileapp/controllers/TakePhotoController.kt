@@ -25,10 +25,10 @@ class TakePhotoController {
 
     @Throws(IOException::class)
      fun takePicture(fragment: Fragment, requestId: Int) {
-        val takePhotoDir = getCacheDir("takePhoto", fragment.context)
+        val takePhotoDir = getCacheDir("takePhoto", fragment.context!!)
 
         val takePhotoFile = File(takePhotoDir, photoName + ".jpg")
-        val outputUri = FileProvider.getUriForFile(fragment.context, authority, takePhotoFile)
+        val outputUri = FileProvider.getUriForFile(fragment.context!!, authority, takePhotoFile)
         photoUrl = takePhotoFile.absolutePath
         val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, outputUri)

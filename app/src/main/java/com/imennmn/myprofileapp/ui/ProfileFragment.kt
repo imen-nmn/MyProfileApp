@@ -44,9 +44,8 @@ class ProfileFragment : Fragment(), OnFailureListener,
     private val uploadPhotoController = UploadPhotoController()
 
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.profile_fragment, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.profile_fragment, container, false)
         val toolbar = view.findViewById<View>(R.id.toolbar) as Toolbar
         val recyclerView: RecyclerView = view.findViewById<View>(R.id.list) as RecyclerView
         profileImg = view.findViewById(R.id.profile_img)
@@ -55,6 +54,7 @@ class ProfileFragment : Fragment(), OnFailureListener,
         profileImg!!.setOnClickListener { openCamera() }
         toolbar.title = ""
         toolbar.subtitle = ""
+        profileImg!!.setImageResource(R.drawable.ic_menu_share)
         mListener!!.setSupportActionBar(toolbar)
         recyclerView.layoutManager = LinearLayoutManager(view.context)
         val items = resources.getStringArray(R.array.profile_menu)
@@ -64,8 +64,8 @@ class ProfileFragment : Fragment(), OnFailureListener,
     }
 
     private fun openCamera() {
-        if (checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
-                || checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        if (checkSelfPermission(context!!, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                || checkSelfPermission(context!!, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             requestCameraPermission()
             return
         }
@@ -96,8 +96,8 @@ class ProfileFragment : Fragment(), OnFailureListener,
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>,
                                             grantResults: IntArray) {
         if (requestCode == requestCameraPermission) {
-            if (checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
-                    || checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            if (checkSelfPermission(activity!!, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED
+                    || checkSelfPermission(activity!!, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 mListener!!.showMessage(getString(R.string.request_permission))
             } else {
                 openCamera()
